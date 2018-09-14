@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css" type="text/css" />
+        <script>
+            var isX = true
+            var gameOver = false
+            function addXorO(event) {
+                cellClicked = event.srcElement.id
+                if (!hasBeenClicked(cellClicked)) {
+                    console.log("event", event.srcElement.id)
+                    html = document.getElementById(cellClicked).innerHTML
+                    if (isX) {
+                        document.getElementById(cellClicked).innerHTML = "X"
+                    } else {
+                        
+                        document.getElementById(cellClicked).innerHTML = "O"
+                    }
+                    isX = !isX
+                    gameOver = checkGameOver()
+                }
+                
+            }
+            
+            function hasBeenClicked(cell) {
+                if (document.getElementById(cell).innerHTML !== "") {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            
+            function checkGameOver() {
+                values = []
+                for (i = 1; i < 10; i++) {
+                    html = document.getElementById(i.toString()).innerHTML
+                    values.push(html)
+                }
+                if (values[0] === values[1] === values[2]) {
+                    return true
+                } else if (values[0] === values[3] === values[6]) {
+                    return true
+                } else if (values[2] === values[5] === values[8]) {
+                    return true
+                } else if (values[6] === values[7] === values[8]) {
+                    return true
+                } else if (values[0] === values[4] === values[8]) {
+                    return true
+                } else if (values[2] === values[4] === values[6]) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Tic Tac Toe</h1>
+        <table style="width:600px; height:500px;">
+            <tr>
+                <td id="1" onClick="addXorO(event)"></td>
+                <td id="2" onClick="addXorO(event)"></td>
+                <td id="3" onClick="addXorO(event)"></td>
+            </tr>
+            <tr>
+                <td id="4" onClick="addXorO(event)"></td>
+                <td id="5" onClick="addXorO(event)"></td>
+                <td id="6" onClick="addXorO(event)"></td>
+            </tr>
+            <tr>
+                <td id="7" onClick="addXorO(event)"></td>
+                <td id="8" onClick="addXorO(event)"></td>
+                <td id="9" onClick="addXorO(event)"></td>
+            </tr>
+        </table>
+    </body>
+</html>
