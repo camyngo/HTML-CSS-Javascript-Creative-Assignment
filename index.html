@@ -9,19 +9,17 @@
             function addXorO(event) {
                 cellClicked = event.srcElement.id
                 if (!hasBeenClicked(cellClicked)) {
-                    console.log("event", event.srcElement.id)
                     html = document.getElementById(cellClicked).innerHTML
                     if (isEditable) {
                        if (isX) {
                             document.getElementById(cellClicked).innerHTML = "X"
-                            event.preventDefault();
+                            document.getElementById("turn").innerHTML = "O's turn!"
                         } else {
                             document.getElementById(cellClicked).innerHTML = "O"
-                            event.preventDefault();
+                            document.getElementById("turn").innerHTML = "X's turn!"
                         }
                         gameOver = checkGameOver()
                         if (gameOver) {
-                            console.log("game over")
                             if (isX) {
                               alert("X's won!")  
                             } else {
@@ -50,7 +48,6 @@
                     html = document.getElementById(i.toString()).innerHTML
                     values.push(html)
                 }
-                console.log("values", values)
                 if (values[0] === values[1] && values[0] === values[2]) {
                     if(values[0] !== "") {
                         document.getElementById("1").style.backgroundColor = "green"
@@ -107,6 +104,19 @@
                         document.getElementById("7").style.backgroundColor = "green"
                       return true  
                     }
+                } else if (values.filter(el => el === "").length === 0) {
+                    document.getElementById("turn").innerHTML = "It's a draw! Click 'New Game' to play again!"
+                    document.getElementById("1").style.backgroundColor = "red"
+                    document.getElementById("2").style.backgroundColor = "red"
+                    document.getElementById("3").style.backgroundColor = "red"
+                    document.getElementById("4").style.backgroundColor = "red"
+                    document.getElementById("5").style.backgroundColor = "red"
+                    document.getElementById("6").style.backgroundColor = "red"
+                    document.getElementById("7").style.backgroundColor = "red"
+                    document.getElementById("8").style.backgroundColor = "red"
+                    document.getElementById("9").style.backgroundColor = "red"
+                    alert("CAT!  It's a draw!")
+                    return false
                 } else {
                     return false
                 }
@@ -121,6 +131,9 @@
             <div style="display:inline-block; margin-left: 40px; margin-top:30px;">
                 <button onClick="window.location.reload()">New Game</button> 
             </div>
+        </div>
+        <div class="center">
+            <h3>Click to Play!</h3>
         </div>
         <table style="width:600px; height:500px;">
             <tr>
@@ -139,5 +152,8 @@
                 <td id="9" onClick="addXorO(event)"></td>
             </tr>
         </table>
+        <div class="center" style="padding-top:10px;" id="turn">
+            X's turn!
+        </div>
     </body>
 </html>
