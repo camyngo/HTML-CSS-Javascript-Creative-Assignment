@@ -1,21 +1,77 @@
 h1 {
-    text-align:center;
+    
+    color: red;
+    text-decoration: blink;
+
 }
 
+body{
+    background-image: url("br.jpg");
+    background-size: 100% 100%;
+    
+}
 table {
+    
     border: 1px solid black;
+
     margin-left:auto;
+
     margin-right:auto;
+
     table-layout:fixed;
+
 }
 
 td {
+
     border: 1px solid black;
-    font-size:36px;
+    font-size: 36px;
+
     text-align: center;
 }
 
 .center {
+
     display: flex;
+
     justify-content: center;
+
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: pink;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px purple;
+  color: red;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.middle{
+		margin: 5px auto;
+}
+
+.vertical {
+	 border-left: 1px solid black;
+	 border-right: 1px solid black;
+}
+
+.horizontal{
+	 border-top: 1px solid black;
+	 border-bottom: 1px solid black;
 }
